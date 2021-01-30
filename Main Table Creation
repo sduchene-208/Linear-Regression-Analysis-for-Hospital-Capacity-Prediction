@@ -1,0 +1,76 @@
+CREATE TABLE public."IDAHO_OREGON_COMBINED"
+(
+    state_of_occurrence text,
+    state_day text PRIMARY KEY,
+    "Day" integer,
+    reporting_date date,
+    inpatient_beds integer,
+    inpatient_beds_used integer,
+    inpatient_beds_used_covid integer,
+    staffed_adult_icu_bed_occupancy integer,
+    staffed_icu_adult_patients_confirmed_and_suspected_covid integer,
+    staffed_icu_adult_patients_confirmed_covid integer,
+    total_adult_patients_hospitalized_confirmed_and_suspected_covid integer,
+    total_adult_patients_hospitalized_confirmed_covid integer,
+    total_pediatric_patients_hospitalized_confirmed_and_suspected_covid integer,
+    total_pediatric_patients_hospitalized_confirmed_covid integer,
+    total_staffed_adult_icu_beds integer,
+    inpatient_beds_utilization integer,
+    percent_of_inpatients_with_covid integer,
+    inpatient_bed_covid_utilization integer,
+    adult_icu_bed_covid_utilization integer,
+    adult_icu_bed_utilization integer       
+);
+
+ALTER TABLE public."IDAHO_OREGON_COMBINED"
+    OWNER to postgres;
+
+CREATE TABLE public."IDAHO_DATA"
+(
+    Day integer PRIMARY KEY,
+    reporting_date date,
+    inpatient_beds integer,
+    inpatient_beds_used integer,
+    inpatient_beds_used_covid integer,
+    staffed_adult_icu_bed_occupancy integer,
+    staffed_icu_adult_patients_confirmed_and_suspected_covid integer,
+    staffed_icu_adult_patients_confirmed_covid integer,
+    total_adult_patients_hospitalized_confirmed_and_suspected_covid integer,
+    total_adult_patients_hospitalized_confirmed_covid integer,
+    total_pediatric_patients_hospitalized_confirmed_and_suspected_covid integer,
+    total_pediatric_patients_hospitalized_confirmed_covid integer,
+    total_staffed_adult_icu_beds integer,
+    inpatient_beds_utilization integer,
+    percent_of_inpatients_with_covid integer,
+    inpatient_bed_covid_utilization integer,
+    adult_icu_bed_covid_utilization integer,
+    adult_icu_bed_utilization integer       
+);
+
+ALTER TABLE public."IDAHO_DATA"
+    OWNER to postgres;
+    
+CREATE TABLE public."OREGON_DATA"
+(
+    Day integer PRIMARY KEY,
+    reporting_date date,
+    inpatient_beds integer,
+    inpatient_beds_used integer,
+    inpatient_beds_used_covid integer,
+    staffed_adult_icu_bed_occupancy integer,
+    staffed_icu_adult_patients_confirmed_and_suspected_covid integer,
+    staffed_icu_adult_patients_confirmed_covid integer,
+    total_adult_patients_hospitalized_confirmed_and_suspected_covid integer,
+    total_adult_patients_hospitalized_confirmed_covid integer,
+    total_pediatric_patients_hospitalized_confirmed_and_suspected_covid integer,
+    total_pediatric_patients_hospitalized_confirmed_covid integer,
+    total_staffed_adult_icu_beds integer,
+    inpatient_beds_utilization integer,
+    percent_of_inpatients_with_covid integer,
+    inpatient_bed_covid_utilization integer,
+    adult_icu_bed_covid_utilization integer,
+    adult_icu_bed_utilization integer       
+);
+
+ALTER TABLE public."OREGON_DATA"
+    OWNER to postgres;
