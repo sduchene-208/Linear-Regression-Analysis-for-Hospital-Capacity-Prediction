@@ -2,7 +2,7 @@ CREATE TABLE public."IDAHO_OREGON_COMBINED"
 (
     state_of_occurrence text,
     state_day text PRIMARY KEY,
-    "Day" integer,
+    day integer,
     reporting_date date,
     inpatient_beds integer,
     inpatient_beds_used integer,
