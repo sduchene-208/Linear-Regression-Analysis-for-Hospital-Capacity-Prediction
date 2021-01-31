@@ -74,3 +74,15 @@ CREATE TABLE public."OREGON_DATA"
 
 ALTER TABLE public."OREGON_DATA"
     OWNER to postgres;
+    
+ALTER TABLE public.idaho_oregon_combined
+    ADD CONSTRAINT "3" UNIQUE (state_day, day, reporting_date)
+    INCLUDE (state_day, day, reporting_date);
+    
+ALTER TABLE public.idaho_data
+    ADD CONSTRAINT "3" UNIQUE (day, reporting_date)
+    INCLUDE (day, reporting_date);
+    
+ALTER TABLE public.oregon_data
+    ADD CONSTRAINT "3" UNIQUE (day, reporting_date)
+    INCLUDE (day, reporting_date);
