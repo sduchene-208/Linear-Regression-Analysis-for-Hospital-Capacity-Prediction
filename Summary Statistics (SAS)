@@ -1,0 +1,15 @@
+ods noproctitle;
+ods graphics / imagemap=on;
+
+proc means data=WORK.IMPORT chartype mean std min max n nmiss vardef=df 
+		skewness;
+	var inpatient_beds inpatient_beds_used inpatient_beds_used_covid 
+		staffed_adult_icu_bed_occupancy staffed_icu_adult_patients_confi 
+		staffed_icu_adult_patients_con_1 total_adult_patients_hospitalize 
+		total_adult_patients_hospitali_1 total_pediatric_patients_hospita 
+		total_pediatric_patients_hospi_1 total_staffed_adult_icu_beds 
+		inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization;
+	class state_of_occurrence;
+run;
