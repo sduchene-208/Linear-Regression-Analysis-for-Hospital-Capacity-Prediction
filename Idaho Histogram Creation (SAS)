@@ -1,0 +1,54 @@
+ods graphics / reset width=6.4in height=4.8in imagemap;
+
+proc sgplot data=WORK.FILTERID;
+	title height=14pt "Idaho";
+	histogram inpatient_beds_utilization / nbins=20;
+	density inpatient_beds_utilization;
+	yaxis grid;
+run;
+
+ods graphics / reset;
+
+ods graphics / reset width=6.4in height=4.8in imagemap;
+
+proc sgplot data=WORK.FILTERID;
+	title height=14pt "Idaho";
+	histogram percent_of_inpatients_with_covid / nbins=20;
+	density percent_of_inpatients_with_covid;
+	yaxis grid;
+run;
+
+ods graphics / reset;
+
+ods graphics / reset width=6.4in height=4.8in imagemap;
+
+proc sgplot data=WORK.FILTERID;
+	title height=14pt "Idaho";
+	histogram inpatient_bed_covid_utilization / nbins=20;
+	density inpatient_bed_covid_utilization;
+	yaxis grid;
+run;
+
+ods graphics / reset;
+
+ods graphics / reset width=6.4in height=4.8in imagemap;
+
+proc sgplot data=WORK.FILTERID;
+	title height=14pt "Idaho";
+	histogram adult_icu_bed_covid_utilization / nbins=20;
+	density adult_icu_bed_covid_utilization;
+	yaxis grid;
+run;
+
+ods graphics / reset;
+
+ods graphics / reset width=6.4in height=4.8in imagemap;
+
+proc sgplot data=WORK.FILTERID;
+	title height=14pt "Idaho";
+	histogram adult_icu_bed_utilization / nbins=20;
+	density adult_icu_bed_utilization;
+	yaxis grid;
+run;
+
+ods graphics / reset;
