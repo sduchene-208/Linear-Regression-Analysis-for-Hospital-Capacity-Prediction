@@ -1,0 +1,16 @@
+ods noproctitle;
+ods graphics / imagemap=on;
+
+proc corr data=WORK.IMPORT pearson nosimple noprob plots=none;
+	var inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization;
+	with day;
+run;
+
+proc corr data=WORK.IMPORT1 pearson nosimple noprob plots=none;
+	var inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization;
+	with day;
+run;
