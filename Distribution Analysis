@@ -1,0 +1,35 @@
+ods noproctitle;
+ods graphics / imagemap=on;
+
+proc sort data=WORK.IMPORT2 out=Work.SortTempTableSorted;
+	by state_of_occurrence;
+run;
+
+proc univariate data=Work.SortTempTableSorted;
+	ods select ProbPlot;
+	var inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization;
+
+	/* Fitting Distributions */
+	probplot inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization / beta(alpha=est beta=est sigma=1 theta=0);
+	inset n / position=nw;
+	probplot inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization / exp(sigma=est theta=0);
+	probplot inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization / gamma(alpha=est sigma=est theta=0);
+	probplot inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization / lognormal(sigma=est theta=0 zeta=est);
+	probplot inpatient_beds_utilization percent_of_inpatients_with_covid 
+		inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+		adult_icu_bed_utilization / weibull(c=est sigma=est theta=0);
+	by state_of_occurrence;
+run;
+
+proc delete data=Work.SortTempTableSorted;
+run;
