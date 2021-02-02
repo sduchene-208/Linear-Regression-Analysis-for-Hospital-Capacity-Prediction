@@ -1,0 +1,22 @@
+options validvarname=any;
+ods noproctitle;
+ods graphics / imagemap=on;
+
+/* Scatter plot matrix macro */
+%macro scatterPlotMatrix(xVars=, title=, groupVar=);
+	proc sgscatter data=WORK.IMPORT;
+		matrix &xVars / %if(&groupVar ne %str()) %then
+			%do;
+				group=&groupVar legend=(sortorder=ascending) %end;
+		;
+		title &title;
+	run;
+
+	title;
+%mend scatterPlotMatrix;
+
+%scatterPlotMatrix(xVars=inpatient_beds_utilization 
+	inpatient_bed_covid_utilization adult_icu_bed_covid_utilization 
+	adult_icu_bed_utilization, 
+	title="Scatter plot matrix grouped by State of Occurrence", 
+	groupVar=state_of_occurrence);
