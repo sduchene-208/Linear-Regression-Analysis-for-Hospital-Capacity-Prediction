@@ -1,98 +1,13 @@
 ods noproctitle;
 ods graphics / imagemap=on;
 
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
-	by reporting_date;
-run;
-
-proc arima data=Work.preProcessedData plots
-    (only)=(series(corr crosscorr) residual(corr normal) 
-		forecast(forecastonly));
-	identify var=adult_icu_bed_utilization (1 1);
-	estimate noint method=CLS;
-	forecast lead=14 back=0 alpha=0.05 id=reporting_date interval=day;
-	outlier;
-	run;
-quit;
-
-proc delete data=Work.preProcessedData;
-run;
-
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
-	by reporting_date;
-run;
-
-proc arima data=Work.preProcessedData plots
-    (only)=(series(corr crosscorr) residual(corr normal) 
-		forecast(forecastonly));
-	identify var=adult_icu_bed_covid_utilization (1 1);
-	estimate noint method=CLS;
-	forecast lead=14 back=0 alpha=0.05 id=reporting_date interval=day;
-	outlier;
-	run;
-quit;
-
-proc delete data=Work.preProcessedData;
-run;
-
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
-	by reporting_date;
-run;
-
-proc arima data=Work.preProcessedData plots
-    (only)=(series(corr crosscorr) residual(corr normal) 
-		forecast(forecastonly));
-	identify var=inpatient_bed_covid_utilization (1 1);
-	estimate noint method=CLS;
-	forecast lead=14 back=0 alpha=0.05 id=reporting_date interval=day;
-	outlier;
-	run;
-quit;
-
-proc delete data=Work.preProcessedData;
-run;
-
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
-	by reporting_date;
-run;
-
-proc arima data=Work.preProcessedData plots
-    (only)=(series(corr crosscorr) residual(corr normal) 
-		forecast(forecastonly));
-	identify var=inpatient_beds_utilization (1 1);
-	estimate noint method=CLS;
-	forecast lead=14 back=0 alpha=0.05 id=reporting_date interval=day;
-	outlier;
-	run;
-quit;
-
-proc delete data=Work.preProcessedData;
-run;
-
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
-	by reporting_date;
-run;
-
-proc arima data=Work.preProcessedData plots
-    (only)=(series(corr crosscorr) residual(corr normal) 
-		forecast(forecastonly));
-	identify var=percent_of_inpatients_with_covid (1 1);
-	estimate noint method=CLS;
-	forecast lead=14 back=0 alpha=0.05 id=reporting_date interval=day;
-	outlier;
-	run;
-quit;
-
-proc delete data=Work.preProcessedData;
-run;
-
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
+proc sort data=WORK.IMPORT out=Work.preProcessedData; *idaho
 	by reporting_date;
 run;
 
 proc arima data=Work.preProcessedData plots(only)=(series(corr) residual(corr 
 		normal) forecast(forecast));
-	identify var=inpatient_bed_covid_utilization;
+	identify var=inpatient_beds_utilization(1);
 	estimate method=ML;
 	forecast lead=12 back=0 alpha=0.05 id=reporting_date interval=day;
 	outlier;
@@ -102,13 +17,13 @@ quit;
 proc delete data=Work.preProcessedData;
 run;
 
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
+proc sort data=WORK.IMPORT1 out=Work.preProcessedData; *oregon
 	by reporting_date;
 run;
 
 proc arima data=Work.preProcessedData plots(only)=(series(corr) residual(corr 
 		normal) forecast(forecast));
-	identify var=percent_of_inpatients_with_covid;
+	identify var=inpatient_beds_utilization(1);
 	estimate method=ML;
 	forecast lead=12 back=0 alpha=0.05 id=reporting_date interval=day;
 	outlier;
@@ -118,13 +33,13 @@ quit;
 proc delete data=Work.preProcessedData;
 run;
 
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
+proc sort data=WORK.IMPORT1 out=Work.preProcessedData; *oregon
 	by reporting_date;
 run;
 
 proc arima data=Work.preProcessedData plots(only)=(series(corr) residual(corr 
 		normal) forecast(forecast));
-	identify var=inpatient_bed_covid_utilization;
+	identify var=percent_of_inpatients_with_covid(1);
 	estimate method=ML;
 	forecast lead=12 back=0 alpha=0.05 id=reporting_date interval=day;
 	outlier;
@@ -134,13 +49,13 @@ quit;
 proc delete data=Work.preProcessedData;
 run;
 
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
+proc sort data=WORK.IMPORT1 out=Work.preProcessedData; *oregon
 	by reporting_date;
 run;
 
 proc arima data=Work.preProcessedData plots(only)=(series(corr) residual(corr 
 		normal) forecast(forecast));
-	identify var=adult_icu_bed_covid_utilization;
+	identify var=inpatient_bed_covid_utilization(1);
 	estimate method=ML;
 	forecast lead=12 back=0 alpha=0.05 id=reporting_date interval=day;
 	outlier;
@@ -150,13 +65,13 @@ quit;
 proc delete data=Work.preProcessedData;
 run;
 
-proc sort data=WORK.IMPORT out=Work.preProcessedData;
+proc sort data=WORK.IMPORT1 out=Work.preProcessedData; *oregon
 	by reporting_date;
 run;
 
 proc arima data=Work.preProcessedData plots(only)=(series(corr) residual(corr 
 		normal) forecast(forecast));
-	identify var=adult_icu_bed_utilization;
+	identify var=adult_icu_bed_utilization(1);
 	estimate method=ML;
 	forecast lead=12 back=0 alpha=0.05 id=reporting_date interval=day;
 	outlier;
